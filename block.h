@@ -31,7 +31,7 @@ int remove_at_block( BLOCK_CONFIG config, void *address, int index, void **key, 
 
 int remove_key_block( BLOCK_CONFIG config, void *address, void *key, int *child );
 
-int transfer_block( BLOCK_CONFIG config, void *addr1, void *addr2, int n );
+int transfer_block( BLOCK_CONFIG config, void *parent, void *source, void *dest, int index, int n );
 
 int tribute_block( BLOCK_CONFIG config, void *parent, void *child, int index, int *at, void *siblings );
 

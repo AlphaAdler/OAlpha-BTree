@@ -33,13 +33,11 @@ int set_comparator_block( void *config_ptr, COMPARATOR comparator ) {
 
 int init_block( void *address, size_t size, size_t key_size, void **config_ptr ) {
 	
-	void *array;
-	
+	struct block_config *config;
 	struct block_header *head;
 	struct block_element *cur;
 	
-	struct block_config *config;
-	
+	void *array;
 	int i;
 	
 	if( !config_ptr )
@@ -90,10 +88,10 @@ int add_key_block( void *config_ptr, void *address, void *key, int child ) {
 	struct block_element *prev;
 	struct block_element *last;
 	struct block_element *next;
-	int t;
 	
 	void *array;
 	int i;
+	int t;
 	
 	if( !config_ptr )
 		return NULL_CONFIG_POINTER;
@@ -102,7 +100,6 @@ int add_key_block( void *config_ptr, void *address, void *key, int child ) {
 	if( !address )
 		return NULL_ADDRESS;
 	head = ( struct block_header * ) address;
-	
 	array = address + BLOCK_HEADER_SIZE;
 	
 	cur = ( struct block_element * ) array;
@@ -183,7 +180,6 @@ int remove_at_block( void *config_ptr, void *address, int index, void **key, int
 	if( !address )
 		return NULL_ADDRESS;
 	head = ( struct block_header * ) address;
-	
 	array = address + BLOCK_HEADER_SIZE;
 	
 	return 0;
@@ -205,16 +201,33 @@ int remove_key_block( void *config_ptr, void *address, void *key, int *child ) {
 	if( !address )
 		return NULL_ADDRESS;
 	head = ( struct block_header * ) address;
-	
 	array = address + BLOCK_HEADER_SIZE;
 	
 	return 0;
 	
 }
 
-int transfer_block( BLOCK_CONFIG config, void *addr1, void *addr2, int n );
+int transfer_block( BLOCK_CONFIG config, void *parent, void *source, void *dest, int index, int n );
 
 int tribute_block( BLOCK_CONFIG config, void *parent, void *child, int index, int *at, void *siblings );
 
-int multiply_block( BLOCK_CONFIG config, void *address, int *at, void *children );
-
+int multiply_block( BLOCK_CONFIG config, void *address, int *at, void *children ) {
+	
+	struct block_config *config;
+	struct block_header *head;
+	struct block_element *cur;
+	
+	void *array;
+	
+	if( !config_ptr )
+		return NULL_CONFIG_POINTER;
+	config = ( struct block_config * ) config_ptr;
+	
+	if( !address )
+		return NULL_ADDRESS;
+	head = ( struct block_header * ) address;
+	array = address + BLOCK_HEADER_SIZE;
+	
+	return 0;
+	
+}
